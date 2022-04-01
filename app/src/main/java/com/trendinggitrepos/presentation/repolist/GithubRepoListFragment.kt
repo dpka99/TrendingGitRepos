@@ -11,7 +11,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.work.WorkInfo
 import com.trendinggitrepos.R
 import com.trendinggitrepos.common.NetworkValidator
 import com.trendinggitrepos.databinding.FragmentGithubRepoListBinding
@@ -44,9 +43,7 @@ class GithubRepoListFragment : Fragment() {
     ): View? {
 
         _binding = FragmentGithubRepoListBinding.inflate(inflater, container, false)
-
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -74,6 +71,9 @@ class GithubRepoListFragment : Fragment() {
         val responseLiveData = sharedViewModel.getReposData()
         responseLiveData.observe(this, Observer {
             if (it != null) {
+                if (!networkValidator.isNetworkAvailable() && it.isNotEmpty()) {
+                    binding.tvMessage.text = ""
+                }
                 adapter.setRepoList(it)
                 adapter.notifyDataSetChanged()
             }
