@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Trending Git Repos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="forks">Forks</string>
+    <string name="stars">Stars</string>
+    <string name="issues">Issues</string>
+    <string name="visibility">Visibility</string>
+    <string name="network_error_message">Please check your network connection and try again!</string>
+    <string name="fragment_github_repo_detail">Details</string>
+</resources>
