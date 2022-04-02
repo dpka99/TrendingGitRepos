@@ -10,7 +10,7 @@ import com.trendinggitrepos.data.model.RepoItem
 interface RepoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveGithubRepositories(tvShows: List<RepoItem>)
+    suspend fun saveGithubRepositories(repositories: List<RepoItem>)
 
     @Query("SELECT * FROM RepoTable")
     suspend fun getAllRepositories(): List<RepoItem>
